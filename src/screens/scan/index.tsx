@@ -1,15 +1,7 @@
 "use client";
 
-import { useQRScannerStore } from "@/stores/qr-scanner";
-import { CameraScan } from "./ui/camera-scan";
+import { QRScanner } from "./ui/qr-scanner";
 
-export const ScanScreen = () => {
-  const { cancel, error, success } = useQRScannerStore();
-  return (
-    <CameraScan
-      onBack={cancel}
-      onError={(err) => error(err)}
-      setResult={(result) => success(result)}
-    />
-  );
+export const ScanQRScreen = () => {
+  return <QRScanner />;
 };

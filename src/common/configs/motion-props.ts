@@ -1,4 +1,4 @@
-import { MotionProps } from "motion/react";
+import { MotionProps } from "framer-motion";
 
 const standard: MotionProps = {
   initial: { scale: 0.7, opacity: 0 },
