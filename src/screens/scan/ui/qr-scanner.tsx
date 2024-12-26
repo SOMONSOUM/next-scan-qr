@@ -117,17 +117,6 @@ export const QRScanner = () => {
             ref={videoRef}
             className="h-full w-full object-cover md:object-contain"
           />
-
-          {/* Scanner Frame Overlay */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-72 h-72 relative md:w-64 md:h-64">
-              <div className="absolute inset-0" />
-              <div className="absolute top-0 left-0 w-8 h-8 border-t-[3px] border-l-[3px] border-white" />
-              <div className="absolute top-0 right-0 w-8 h-8 border-t-[3px] border-r-[3px] border-white" />
-              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-[3px] border-l-[3px] border-white" />
-              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[3px] border-r-[3px] border-white" />
-            </div>
-          </div>
         </div>
 
         {/* Bottom Controls */}
