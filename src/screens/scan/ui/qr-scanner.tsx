@@ -116,18 +116,6 @@ export const QRScanner = () => {
         {/* Camera View */}
         <div className="relative h-full">
           <video ref={videoRef} className="h-full w-full object-cover" />
-
-          {/* Scanning Frame */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="absolute inset-0 bg-black/60" />
-            <div className="relative w-72 h-72 max-w-[80vw] max-h-[80vw]">
-              {/* Corner Markers */}
-              <div className="absolute -top-1 -left-1 w-12 h-12 border-t-4 border-l-4 border-white rounded-tl-xl" />
-              <div className="absolute -top-1 -right-1 w-12 h-12 border-t-4 border-r-4 border-white rounded-tr-xl" />
-              <div className="absolute -bottom-1 -left-1 w-12 h-12 border-b-4 border-l-4 border-white rounded-bl-xl" />
-              <div className="absolute -bottom-1 -right-1 w-12 h-12 border-b-4 border-r-4 border-white rounded-br-xl" />
-            </div>
-          </div>
         </div>
 
         {/* Bottom Controls */}
@@ -141,7 +129,7 @@ export const QRScanner = () => {
             >
               <Flashlight
                 className={`w-5 h-5 mr-2 ${
-                  flashlightOn ? "text-yellow-300" : ""
+                  flashlightOn ? "text-yellow-300" : "text-white"
                 }`}
               />
               ភ្លើង
@@ -151,7 +139,7 @@ export const QRScanner = () => {
               className="h-12 flex-1 max-w-40 bg-neutral-900/90 text-white hover:bg-neutral-800/90 rounded-full"
               onClick={() => fileInputRef.current?.click()}
             >
-              <QrCode className="w-5 h-5 mr-2" />
+              <QrCode className="w-5 h-5 mr-2 text-white" />
               ថែត QR
             </Button>
           </div>
