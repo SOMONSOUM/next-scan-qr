@@ -98,54 +98,66 @@ export const QRScanner = () => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black">
-      <div className="relative h-full max-h-[100dvh] w-full overflow-hidden">
-        {/* Header */}
-        <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between p-4 bg-gradient-to-b from-black/50 to-transparent">
+    <div className="fixed inset-0 bg-black flex items-center justify-center">
+      <div className="relative w-full h-full md:h-[80vh] md:w-[500px] md:rounded-2xl md:shadow-2xl overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between p-4 bg-gradient-to-b from-black/80 to-transparent">
           <h1 className="text-xl font-bold text-white">AAS ស្កែន</h1>
           <Button
             variant="ghost"
-            size="icon"
-            className="text-white hover:bg-white/20"
+            className="text-white p-2 h-auto hover:bg-transparent"
             onClick={handleBack}
           >
-            <X className="w-6 h-6" />
+            <X className="h-6 w-6" />
           </Button>
         </div>
 
         {/* Camera View */}
-        <div className="relative h-full">
-          <video ref={videoRef} className="h-full w-full object-cover" />
+        <div className="relative h-full bg-gray-900 flex items-center justify-center">
+          <video
+            ref={videoRef}
+            className="h-full w-full object-cover md:object-contain"
+          />
+
+          {/* Scanner Frame Overlay */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-72 h-72 relative md:w-64 md:h-64">
+              <div className="absolute inset-0" />
+              <div className="absolute top-0 left-0 w-8 h-8 border-t-[3px] border-l-[3px] border-white" />
+              <div className="absolute top-0 right-0 w-8 h-8 border-t-[3px] border-r-[3px] border-white" />
+              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-[3px] border-l-[3px] border-white" />
+              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[3px] border-r-[3px] border-white" />
+            </div>
+          </div>
         </div>
 
         {/* Bottom Controls */}
-        <div className="absolute bottom-0 left-0 right-0 pb-safe">
+        <div className="absolute bottom-0 left-0 right-0 pb-safe bg-gradient-to-t from-black/80 to-transparent">
           {/* Action Buttons */}
-          <div className="flex justify-center gap-4 p-4">
+          <div className="flex justify-center gap-3 p-4 md:pb-6">
             <Button
               variant="ghost"
-              className="h-12 flex-1 max-w-40 bg-neutral-900/90 text-white hover:bg-neutral-800/90 rounded-full"
+              className="h-12 flex-1 max-w-40 bg-black/80 text-white hover:bg-black/70 rounded-full"
               onClick={toggleFlashlight}
             >
               <Flashlight
-                className={`w-5 h-5 mr-2`}
-                color={`${flashlightOn ? "yello" : "white"}`}
+                className="w-5 h-5 mr-2"
+                color={`${flashlightOn ? "yellow" : "white"}`}
               />
-              <span style={{ color: "#fff" }}>ភ្លើង</span>
+              <span>ភ្លើង</span>
             </Button>
             <Button
               variant="ghost"
-              className="h-12 flex-1 max-w-40 bg-neutral-900/90 hover:bg-neutral-800/90 rounded-full"
+              className="h-12 flex-1 max-w-40 bg-black/80 hover:bg-black/70 rounded-full"
               onClick={() => fileInputRef.current?.click()}
             >
-              <QrCode className="w-5 h-5 mr-2" color="#fff" />
-              <span style={{ color: "#fff" }}>ថែត QR</span>
+              <QrCode className="w-5 h-5 mr-2" color="white" />
+              <span className="text-white">បើក QR</span>
             </Button>
           </div>
 
           {/* Payment Methods */}
-          <div className="bg-black p-4">
-            <div className="flex justify-center items-center gap-2 overflow-x-auto py-2 px-4">
+          <div className="bg-black/80 backdrop-blur-sm p-4">
+            <div className="flex justify-center items-center gap-2 overflow-x-auto py-2 px-4 bg-white rounded-lg">
               {[
                 "/bakong.png",
                 "/nbc.svg",
@@ -167,7 +179,7 @@ export const QRScanner = () => {
           </div>
         </div>
 
-        {/* Hidden file input */}
+        {/* Keeping your existing file input and dialog components */}
         <input
           ref={fileInputRef}
           type="file"
@@ -188,7 +200,6 @@ export const QRScanner = () => {
           }}
         />
 
-        {/* Result Dialog */}
         <AlertDialog
           open={!!scanResult}
           onOpenChange={() => scanResult && closeDialog()}
