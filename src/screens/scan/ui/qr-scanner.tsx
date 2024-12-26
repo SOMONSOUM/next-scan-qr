@@ -102,7 +102,7 @@ export const QRScanner = () => {
       <div className="relative h-full max-h-[100dvh] w-full overflow-hidden">
         {/* Header */}
         <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between p-4 bg-gradient-to-b from-black/50 to-transparent">
-          <h1 className="text-xl font-bold text-white">ABA&apos; ស្កែន</h1>
+          <h1 className="text-xl font-bold text-white">AAS ស្កែន</h1>
           <Button
             variant="ghost"
             size="icon"
@@ -128,19 +128,18 @@ export const QRScanner = () => {
               onClick={toggleFlashlight}
             >
               <Flashlight
-                className={`w-5 h-5 mr-2 ${
-                  flashlightOn ? "text-yellow-300" : "text-white"
-                }`}
+                className={`w-5 h-5 mr-2`}
+                color={`${flashlightOn ? "yello" : "white"}`}
               />
-              ភ្លើង
+              <span style={{ color: "#fff" }}>ភ្លើង</span>
             </Button>
             <Button
               variant="ghost"
-              className="h-12 flex-1 max-w-40 bg-neutral-900/90 text-white hover:bg-neutral-800/90 rounded-full"
+              className="h-12 flex-1 max-w-40 bg-neutral-900/90 hover:bg-neutral-800/90 rounded-full"
               onClick={() => fileInputRef.current?.click()}
             >
-              <QrCode className="w-5 h-5 mr-2 text-white" />
-              ថែត QR
+              <QrCode className="w-5 h-5 mr-2" color="#fff" />
+              <span style={{ color: "#fff" }}>ថែត QR</span>
             </Button>
           </div>
 
