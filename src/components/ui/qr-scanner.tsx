@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 export const QRScanner = () => {
-  const [, setHasCamera] = useState(false);
+  const [hasCamera, setHasCamera] = useState(false);
   const [isScanning, setIsScanning] = useState(false);
   const [flashlightOn, setFlashlightOn] = useState(false);
   const [scanResult, setScanResult] = useState<string | null>(null);
