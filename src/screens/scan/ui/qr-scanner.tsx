@@ -98,45 +98,44 @@ export const QRScanner = () => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black flex items-center justify-center">
-      <div className="relative w-full h-full md:h-[80vh] md:w-[500px] md:rounded-2xl md:shadow-2xl overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between p-4 bg-gradient-to-b from-black/80 to-transparent">
-          <h1 className="text-xl font-bold text-white">AAS ស្កែន</h1>
-          <Button
-            variant="ghost"
-            className="text-white p-2 h-auto hover:bg-transparent"
-            onClick={handleBack}
-          >
-            <X className="h-6 w-6" />
-          </Button>
+    <>
+      <div >
+        <div className="absolute top-0 left-0 right-0 z-50 ">
+          <div className="flex justify-between items-center bg-gradient-to-t from-[#2980B9] to-[#0c3958] backdrop-blur-sm p-5 ">
+            <h1 className="text-xl font-bold text-white">AAS ស្កែន</h1>
+            <Button
+              variant="ghost"
+              className="text-white p-2 h-auto hover:bg-transparent hover:text-gray-300"
+              onClick={handleBack}
+            >
+              <X className="h-6 w-6" />
+            </Button>
+          </div>
         </div>
 
-        {/* Camera View */}
-        <div className="relative h-full bg-gray-900 flex items-center justify-center">
+        <div className="absolute top-0 h-[90%] left-0 right-0">
           <video
             ref={videoRef}
-            className="h-full w-full object-cover md:object-contain"
+            className="w-full h-full object-none "
           />
         </div>
 
-        {/* Bottom Controls */}
-        <div className="absolute bottom-0 left-0 right-0 pb-safe bg-gradient-to-t from-black/80 to-transparent">
-          {/* Action Buttons */}
+        <div className="absolute bottom-0 left-0 right-0 pb-safe ">
           <div className="flex justify-center gap-3 p-4 md:pb-6">
             <Button
               variant="ghost"
-              className="h-12 flex-1 max-w-40 bg-black/80 text-white hover:bg-black/70 rounded-full"
+              className="h-12 flex-1 max-w-40 bg-gradient-to-b from-[#2980B9] to-[#0c3958]  rounded-full "
               onClick={toggleFlashlight}
             >
               <Flashlight
                 className="w-5 h-5 mr-2"
                 color={`${flashlightOn ? "yellow" : "white"}`}
               />
-              <span>ភ្លើង</span>
+              <span className="text-white">ភ្លើង</span>
             </Button>
             <Button
               variant="ghost"
-              className="h-12 flex-1 max-w-40 bg-black/80 hover:bg-black/70 rounded-full"
+              className="h-12 flex-1 max-w-40 bg-gradient-to-b from-[#2980B9] to-[#0c3958]  rounded-full"
               onClick={() => fileInputRef.current?.click()}
             >
               <QrCode className="w-5 h-5 mr-2" color="white" />
@@ -144,9 +143,8 @@ export const QRScanner = () => {
             </Button>
           </div>
 
-          {/* Payment Methods */}
-          <div className="bg-black/80 backdrop-blur-sm p-4">
-            <div className="flex justify-center items-center gap-2 overflow-x-auto py-2 px-4 bg-white rounded-lg">
+          <div className="bg-gradient-to-b from-[#2980B9] to-[#0c3958] backdrop-blur-sm p-4">
+            <div className="flex justify-center items-center gap-2 overflow-x-auto py-5 px-4  rounded-lg">
               {[
                 "/bakong.png",
                 "/nbc.svg",
@@ -167,8 +165,6 @@ export const QRScanner = () => {
             </div>
           </div>
         </div>
-
-        {/* Keeping your existing file input and dialog components */}
         <input
           ref={fileInputRef}
           type="file"
@@ -206,6 +202,6 @@ export const QRScanner = () => {
           </AlertDialogContent>
         </AlertDialog>
       </div>
-    </div>
+    </>
   );
 };
